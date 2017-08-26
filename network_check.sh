@@ -22,10 +22,10 @@
 clear
 
 # Write here the gateway / website you want to check to declare if network is working or not
-gateway_ip='www.google.com'
+gateway_ip='10.0.0.1'
 
 # Specify the path of a txt file where the network failures count will be held
-network_check_tries_file='/home/pi/scripts/network_check/network_check_tries.txt'
+network_check_tries_file='/home/pi/bash-network-repair-automation/network_check_tries.txt'
 
 # Save into a variable its content
 network_check_tries=`cat $network_check_tries_file`
