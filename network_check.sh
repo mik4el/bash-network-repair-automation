@@ -56,6 +56,6 @@ echo "Network was not working for the previous $network_check_tries checks."
     then
         echo "Network is working correctly" && echo 0 > $network_check_tries_file
     else
-        echo "Network is down..." && echo 0 > $network_check_tries_file && reboot
+        echo "Network is down..." && echo 0 > $network_check_tries_file && shutdown now
     fi
 fi
