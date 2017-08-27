@@ -41,8 +41,8 @@ else
     echo "Network is down..." && echo $(($network_check_tries + 1)) > $network_check_tries_file
 fi
 
-# If network test failed more than 5 times (you can change this value to whatever you prefer)
-if [ $network_check_tries -gt 5 ]; then
+# If network test failed more than 10 times (you can change this value to whatever you prefer)
+if [ $network_check_tries -gt 10 ]; then
 echo "Network was not working for the previous $network_check_tries checks."
 # Time to restart wlan0
     echo "Restarting wlan0"
@@ -50,12 +50,12 @@ echo "Network was not working for the previous $network_check_tries checks."
     sleep 5
     /sbin/ifup --force 'wlan0'
     sleep 30
-# Then we check again if restarting wlan0 fixed the issue, if not we reboot as last resort
+# Then we check again if restarting wlan0 fixed the issue, if not we make a safe shutdown as last resort since power must be out 
     host_status=$(fping $gateway_ip)
     if [[ $host_status == *"alive"* ]]
     then
         echo "Network is working correctly" && echo 0 > $network_check_tries_file
     else
-        echo "Network is down..." && echo 0 > $network_check_tries_file && shutdown now
+        echo "Network is down..." && echo 0 > $network_check_tries_file && sudo shutdown -h now
     fi
 fi
