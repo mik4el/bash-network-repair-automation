@@ -17,8 +17,8 @@ Following instructions are tested on Raspberry Pi but should work on Debian with
 `sudo apt-get install ifupdown fping`
 * Copy / clone this repo into a folder and then add to your:  
 `sudo crontab -e`  
-this row to run it every 5 minutes:  
-`*/5 * * * * /yourpath/network_check.sh`
+this row to run it every minute:  
+`*/1 * * * * /yourpath/network_check.sh`
 
 Note:
 If you want to perform automatic repair fsck in case of reboot (this is the last possible recovery action) remember to uncomment fsck autorepair here:  
