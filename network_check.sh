@@ -41,8 +41,8 @@ else
     echo "Network is down..." && echo $(($network_check_tries + 1)) > $network_check_tries_file
 fi
 
-# If network test failed more than 10 times (you can change this value to whatever you prefer)
-if [ $network_check_tries -gt 10 ]; then
+# If network test failed more than 3 times (you can change this value to whatever you prefer)
+if [ $network_check_tries -gt 3 ]; then
 echo "Network was not working for the previous $network_check_tries checks."
 # Time to restart wlan0
     echo "Restarting wlan0"
